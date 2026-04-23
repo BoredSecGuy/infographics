@@ -1,0 +1,16 @@
+{
+  "buildCommand": null,
+  "outputDirectory": "public",
+  "rewrites": [
+    { "source": "/missouri-tax-shift", "destination": "/missouri-tax-shift/index.html" },
+    { "source": "/missouri-tax-shift/reddit", "destination": "/missouri-tax-shift/reddit.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600, s-maxage=86400" }
+      ]
+    }
+  ]
+}
