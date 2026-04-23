@@ -2,8 +2,7 @@
   "buildCommand": null,
   "outputDirectory": "public",
   "rewrites": [
-    { "source": "/missouri-tax-shift", "destination": "/missouri-tax-shift/index.html" },
-    { "source": "/missouri-tax-shift/reddit", "destination": "/missouri-tax-shift/reddit.html" }
+    { "source": "/missouri-tax-shift", "destination": "/missouri-tax-shift/index.html" }
   ],
   "headers": [
     {
