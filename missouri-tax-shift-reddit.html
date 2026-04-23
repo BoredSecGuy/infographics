@@ -385,9 +385,9 @@
           Proposed (sales tax only, expanded)
         </div>
         <div class="legend-item">
-          <div class="legend-swatch" style="background:rgba(155,32,32,0.2)"></div>
+          <div class="legend-swatch" style="background:rgba(224,27,27,0.25)"></div>
           Pay more &nbsp;
-          <div class="legend-swatch" style="background:rgba(31,107,68,0.18);margin-left:4px"></div>
+          <div class="legend-swatch" style="background:rgba(0,166,62,0.25);margin-left:4px"></div>
           Pay less
         </div>
       </div>
@@ -591,13 +591,13 @@ function drawChart(){
   ctx.beginPath();
   chartData.forEach((d,i)=>{const x=xp(d.inc),y=yp(Math.max(d.cur,d.prop));i?ctx.lineTo(x,y):ctx.moveTo(x,y);});
   chartData.slice().reverse().forEach(d=>{ctx.lineTo(xp(d.inc),yp(Math.min(d.cur,d.prop)));});
-  ctx.closePath(); ctx.fillStyle='rgba(155,32,32,0.09)'; ctx.fill();
+  ctx.closePath(); ctx.fillStyle='rgba(224,27,27,0.18)'; ctx.fill();
 
   // Shade green
   let started=false; ctx.beginPath();
   chartData.forEach(d=>{if(d.cur>d.prop){const x=xp(d.inc);if(!started){ctx.moveTo(x,yp(d.cur));started=true;}else ctx.lineTo(x,yp(d.cur));}});
   chartData.filter(d=>d.cur>d.prop).reverse().forEach(d=>ctx.lineTo(xp(d.inc),yp(d.prop)));
-  if(started){ctx.closePath();ctx.fillStyle='rgba(31,107,68,0.09)';ctx.fill();}
+  if(started){ctx.closePath();ctx.fillStyle='rgba(0,166,62,0.18)';ctx.fill();}
 
   // Blue solid — current
   ctx.beginPath(); ctx.strokeStyle='#1A5FA8'; ctx.lineWidth=2.5; ctx.setLineDash([]);
@@ -614,10 +614,10 @@ function drawChart(){
     const prev=chartData[i-1],curr=chartData[i];
     if((prev.prop-prev.cur)*(curr.prop-curr.cur)<0){
       const mx=xp(curr.inc);
-      ctx.strokeStyle='#1F6B44'; ctx.lineWidth=1; ctx.setLineDash([2,2]);
+      ctx.strokeStyle='#00A63E'; ctx.lineWidth=1; ctx.setLineDash([2,2]);
       ctx.beginPath(); ctx.moveTo(mx,PAD.t); ctx.lineTo(mx,H-PAD.b); ctx.stroke();
       ctx.setLineDash([]);
-      ctx.fillStyle='#1F6B44'; ctx.font='bold 9px JetBrains Mono,monospace'; ctx.textAlign='center';
+      ctx.fillStyle='#00A63E'; ctx.font='bold 9px JetBrains Mono,monospace'; ctx.textAlign='center';
       ctx.fillText('Crossover ~$'+Math.round(curr.inc/1000)+'K',mx,PAD.t+11);
       break;
     }
