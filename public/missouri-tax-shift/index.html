@@ -58,30 +58,6 @@
     padding:28px 18px 80px;
   }
 
-  /* ── REDDIT POST COPY BOX ── */
-  .reddit-box {
-    background: var(--surface);
-    border: 1.5px solid var(--blue);
-    border-radius: 2px;
-    padding: 20px 22px;
-    margin-bottom: 36px;
-    position: relative;
-  }
-  .reddit-box::before {
-    content: 'SUGGESTED POST TITLE + BODY — COPY THIS TO REDDIT';
-    position: absolute; top: -1px; left: 0;
-    font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.18em;
-    color: var(--surface); background: var(--blue); padding: 3px 10px;
-  }
-  .reddit-title {
-    font-family: var(--mono); font-size: 13px; font-weight: 600;
-    color: var(--text); margin-top: 14px; margin-bottom: 10px;
-    line-height: 1.4;
-  }
-  .reddit-body {
-    font-size: 13px; color: var(--text-dim); line-height: 1.65;
-  }
-  .reddit-body p { margin-bottom: 8px; }
   .copy-btn {
     margin-top: 14px; padding: 8px 16px;
     background: var(--blue); color: #fff;
@@ -359,18 +335,6 @@
 </head>
 <body>
 <div class="container">
-
-  <!-- REDDIT POST COPY -->
-  <div class="reddit-box">
-    <div class="reddit-title" id="postCopy">Missouri just passed a bill to eliminate the state income tax and replace it with an expanded sales tax. Voters decide in November. I built an interactive calculator to show what it actually means for your wallet — by income level. STL city residents have a note at the top.</div>
-    <div class="reddit-body">
-      <p>The legislature passed HJR 173 &amp; 174 on April 22. If voters approve it in November, Missouri phases out income tax by ~2032 and gives legislators authority to expand sales taxes with no voter approval needed.</p>
-      <p>The math is not simple. The income tax savings are real — but so is the sales tax hit, and they don't cancel out evenly across income levels. Type in your income and see.</p>
-      <p><em>[Link to this page]</em></p>
-      <p>Sources: MO Budget Project, ITEP, Tax Foundation, Beacon News. Methodology is in the collapsible section at the bottom. Happy to be corrected in the comments if I got something wrong.</p>
-    </div>
-    <button class="copy-btn" onclick="copyPost()">Copy Post Text</button>
-  </div>
 
   <!-- HOOK HEADER -->
   <div>
@@ -777,16 +741,6 @@ tiers.forEach(tier=>{
   tchart.appendChild(row);
   setTimeout(()=>{bar.style.width=wpct+'%';},200);
 });
-
-// ── COPY BUTTON ──────────────────────────────────────────────────────────────
-function copyPost(){
-  const text=`Missouri just passed a bill to eliminate the state income tax and replace it with an expanded sales tax. Voters decide in November. I built an interactive calculator to show what it actually means for your wallet — by income level. STL city residents have a note at the top.\n\nThe legislature passed HJR 173 & 174 on April 22. If voters approve it in November, Missouri phases out income tax by ~2032 and gives legislators authority to expand sales taxes with no voter approval needed.\n\nThe math is not simple. The income tax savings are real — but so is the sales tax hit, and they don't cancel out evenly across income levels. Type in your income and see.\n\nSources: MO Budget Project, ITEP, Tax Foundation, Beacon News. Methodology is in the collapsible section. Happy to be corrected if I got something wrong.`;
-  navigator.clipboard.writeText(text).then(()=>{
-    const btn=document.querySelector('.copy-btn');
-    btn.textContent='Copied ✓'; btn.style.background='var(--green)';
-    setTimeout(()=>{btn.textContent='Copy Post Text';btn.style.background='var(--blue)';},2500);
-  });
-}
 
 window.addEventListener('resize',drawChart);
 update();
